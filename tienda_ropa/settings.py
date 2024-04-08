@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'tienda_ropa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nombre_basedatos',
+        'USER': 'root',
+        'PASSWORD': 'fVa-RVu}+YiZZyC0)L.G',
+        'HOST': 'localhost',   # O el host donde se encuentra tu base de datos MySQL
+        'PORT': '3306',  
     }
 }
 
