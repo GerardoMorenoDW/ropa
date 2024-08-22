@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
+import Image from 'next/image';
 import { Inter } from "next/font/google";
 import "./globals.css";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu";
+import { Link } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +28,71 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div>
+          <Image
+          src="/Hiit.svg"
+          width={500}
+          height={500}
+          alt="Hiit Logo"
+          />
+        </div>
+        <NavigationMenu>
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuLink href="/">Inicio</NavigationMenuLink>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Hombres</NavigationMenuTrigger>
+              <NavigationMenuContent>
+            <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+              <li className="row-span-3">
+                <NavigationMenuLink asChild>
+                  <a
+                    className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                    href="/"
+                  >
+                    <div className="mb-2 mt-4 text-lg font-medium">
+                      shadcn/ui
+                    </div>
+                    <p className="text-sm leading-tight text-muted-foreground">
+                      Beautifully designed components that you can copy and
+                      paste into your apps. Accessible. Customizable. Open
+                      Source.
+                    </p>
+                  </a>
+                </NavigationMenuLink>
+              </li>
+              <Link href="/docs">
+                Re-usable components built using Radix UI and Tailwind CSS.
+              </Link>
+              <Link href="/docs/installation">
+                How to install dependencies and structure your app.
+              </Link>
+              <Link href="/docs/primitives/typography">
+                <p>Styles for headings, paragraphs, lists...etc</p>
+              </Link>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
+          <NavigationMenuContent>
+          </NavigationMenuContent>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Mujeres</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <NavigationMenuLink href="/producto">Tops</NavigationMenuLink>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+
+          </NavigationMenuList>
+        </NavigationMenu>
+        {children}
+      </body>
     </html>
   );
 }
